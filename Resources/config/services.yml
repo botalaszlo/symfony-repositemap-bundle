@@ -1,0 +1,7 @@
+parameters:
+    repo.sitemap.service.class:  RepoSiteMapBundle\Services\SitemapService
+
+services:
+    repo.sitemap:
+        class:        '%repo.sitemap.service.class%'
+        arguments:    ["@doctrine.orm.entity_manager", "@router"]
