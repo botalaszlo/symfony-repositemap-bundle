@@ -1,4 +1,4 @@
-# symfony-repositemap-bundle
+# RepoSiteMap Bundle (for symfony2)
 RepoSiteMapbundle is a symfony 2 bundle which provides creating sitemap.xml from **static pages** and from **dynamic pages** (like posts, articles, products details page) so the bundle will be generate **urls for each entities view page**.
 
 ##Requirements (minimum)
