@@ -36,5 +36,6 @@
       "RepoSitemapBundle\\": "",
       "Tests\\": "tests/"
     }
-  }
+  },
+  "minimum-stability": "dev"
 }
