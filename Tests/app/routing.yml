@@ -1,0 +1,4 @@
+repo_site_map:
+    resource: "@RepoSitemapBundle/Controller/"
+    type:     annotation
+    prefix:   /

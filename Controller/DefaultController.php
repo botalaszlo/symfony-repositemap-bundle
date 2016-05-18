@@ -1,32 +1,34 @@
 <?php
 
-namespace RepoSiteMapBundle\Controller;
+namespace RepoSitemapBundle\Controller;
 
+use RepoSitemapBundle\Services\SiteMapService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
- * Description of RepoSiteMapBundle\Controller\DefaultController
+ * Description of RepoSitemapBundle\Controller\DefaultController
  *
- * @author Bóta László Gábor
- * @package RepoSiteMapBundle
- * @subpackage RepoSiteMapBundle\Controller
- * @version 0.1
- *
- * @see Controller
+ * @author Bóta László <bota.laszlo.dev@outlook.com>
+ * @package RepoSitemapBundle
+ * @subpackage RepoSitemapBundle\Controller
+ * @version 1.1.0
  */
 class DefaultController extends Controller
 {
     /**
-     * Generating sitemap xml file
-     * 
-     * @Route("/sitemap.{_format}", name="CoreBundle_sitemap", requirements={"_format" = "xml"})
+     * @var SiteMapService
      */
-    public function sitemapAction() {
-        $sitemapService = $this->get('repo.sitemap');
-        $generatedUrls = $sitemapService->generateSitemapUrls();
+    protected $siteMapService;
 
-        return $this->render('RepoSiteMapBundle:Default:sitemap.xml.twig', array('urls' => $generatedUrls));
+    /**
+     * Generating sitemap xml file
+     *
+     * @Route("/sitemap.{_format}", name="RepoSitemapBundle_sitemap", requirements={"_format" = "xml"})
+     */
+    public function siteMapAction() {
+        $this->siteMapService = $this->get('repo.sitemap');
+        $generatedUrls = $this->siteMapService->generateSitemapUrls();
+        return $this->render('RepoSitemapBundle:Default:sitemap.xml.twig', array('urls' => $generatedUrls));
     }
 }

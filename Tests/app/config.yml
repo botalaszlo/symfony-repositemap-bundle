@@ -1,0 +1,11 @@
+framework:
+    secret:          secret
+    test:            ~
+    router:          { resource: "%kernel.root_dir%/routing.yml" }
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+            engines: ['twig']
+    session:
+        storage_id:  session.storage.filesystem
