@@ -1,0 +1,36 @@
+language: php
+
+php:
+    - 7.0
+
+sudo: false
+
+matrix:
+    include:
+        - php: 7.0
+          env: SYMFONY_VERSION=3.0.*@dev SYMFONY_DEPRECATIONS_HELPER=strict
+    allow_failures:
+        - env: SYMFONY_VERSION=3.0.*@dev
+    fast_finish: true
+
+env:
+    global:
+        - MIN_PHP=5.6
+        - SYMFONY_PROCESS_PHP_TEST_BINARY=~/.phpenv/versions/5.6/bin/php
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+        - .phpunit
+        - php-$MIN_PHP
+
+before_install:
+# Matrix lines for intermediate PHP versions are skipped for pull requests
+    - if [[ ! $PHP = ${MIN_PHP%.*} && $TRAVIS_PULL_REQUEST != false ]]; then skip=1; fi
+    - composer self-update --stable;
+    - if [ "$SYMFONY_VERSION" != "" ]; then composer require --no-update symfony/symfony:${SYMFONY_VERSION}; fi
+
+install: if [ ! $skip ]; then composer update --prefer-dist; fi
+
+script:
+  - phpunit Tests/;

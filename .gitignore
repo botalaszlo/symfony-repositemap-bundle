@@ -1,0 +1,8 @@
+.idea/*
+
+# Vendor directory
+/vendor/*
+
+# Tests's AppKernel directories not required
+/Tests/app/cache/*
+/Tests/app/logs/*
