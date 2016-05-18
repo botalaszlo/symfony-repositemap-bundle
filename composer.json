@@ -1,5 +1,5 @@
 {
-  "name": "symfony-repositemap-bundle",
+  "name": "botalaszlo/symfony-repositemap-bundle",
   "description": "RepoSiteMapbundle is a symfony 2 bundle which provides creating sitemap.xml from static urls and from entity repository.",
   "keywords": ["symfony2", "bundle", "sitemap", "xml"],
   "type": "symfony-bundle",
@@ -37,10 +37,5 @@
       "Tests\\": "tests/"
     }
   },
-  "minimum-stability": "dev",
-  "extra": {
-  	"branch-alias": {
-  		"dev-master": "1.1-dev"
-  }
-}
+  "minimum-stability": "dev"
 }
